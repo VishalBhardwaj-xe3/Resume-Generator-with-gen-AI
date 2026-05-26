@@ -1,5 +1,9 @@
 package com.intervi.resume.models;
 
+import java.time.LocalDateTime;
+
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import jakarta.validation.constraints.NotBlank;
@@ -10,6 +14,9 @@ import lombok.Data;
 @Data
     @Document(collection = "users")
 public class User {
+
+    @Id
+    private String Id;
 
     @NotBlank(message = "Usename is required")
     @Indexed(unique = true)
@@ -22,5 +29,8 @@ public class User {
 
     @NotBlank(message = "password is required")
     private String password;
+
+    @CreatedDate
+    private LocalDateTime createdAt;
 
 }
