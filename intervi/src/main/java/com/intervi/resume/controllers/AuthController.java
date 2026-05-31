@@ -18,12 +18,15 @@ import com.intervi.resume.models.BlackListToken;
 import com.intervi.resume.models.User;
 import com.intervi.resume.repository.BlackListedTokenRepository;
 import com.intervi.resume.repository.UserRepository;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 
 
 
 @RestController
 @RequestMapping("/api/auth")
+@CrossOrigin(origins = "http://localhost:5173")
 public class AuthController {
     @Autowired 
     private UserRepository UserRepository;
