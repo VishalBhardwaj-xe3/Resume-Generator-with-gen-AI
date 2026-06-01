@@ -18,7 +18,7 @@ public class User {
     @Id
     private String Id;
 
-    @NotBlank(message = "Usename is required")
+    @NotBlank(message = "Username is required")
     @Indexed(unique = true)
     private String username;
 
