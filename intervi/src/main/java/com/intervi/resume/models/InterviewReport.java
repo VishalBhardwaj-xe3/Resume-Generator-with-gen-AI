@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -13,6 +15,7 @@ import lombok.Data;
 
 @Data
 @Document(collection = "interview_reports")
+@JsonIgnoreProperties(ignoreUnknown = true) 
 public class InterviewReport {
 
     @Id
@@ -33,11 +36,11 @@ public class InterviewReport {
     private double matchScore;
 
 
-    private List<QusetionAnswer> technicalQuestion;
+    private List<QusetionAnswer> technicalQuestions;
 
-    private List<Behavioral> behaviioralQuestion;
+    private List<Behavioral> behavioralQuestions;
 
-    private List<SkillGap> skillGap;
+    private List<SkillGap> skillGaps;
 
     private List<Preparation> preparationPlan;
 
