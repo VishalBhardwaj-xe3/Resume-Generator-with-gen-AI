@@ -39,6 +39,8 @@ public class InterviewReportController {
         InterviewReport report = aiServices.generateReport(jobDescription, selfDescription);
 
         report.setUserId(email);
+        report.setJobDescription(jobDescription);
+        report.setSelfDescription(selfDescription);
         interviewreportRepository.save(report);
 
         return ResponseEntity.ok(report);
