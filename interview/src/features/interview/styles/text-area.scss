@@ -1,0 +1,66 @@
+.textarea-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  .textarea-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .textarea-label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #e4e6eb;
+    display: block;
+  }
+
+  .textarea-hint {
+    font-size: 0.8rem;
+    color: #a0a6b4;
+    font-weight: 500;
+    background-color: rgba(0, 217, 255, 0.1);
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.25rem;
+    color: #00d9ff;
+  }
+
+  .textarea-input {
+    width: 100%;
+    min-height: 120px;
+    padding: 1rem;
+    border: 2px solid #333a4a;
+    border-radius: 0.75rem;
+    font-family: inherit;
+    font-size: 1rem;
+    color: #e4e6eb;
+    background-color: #16192e;
+    resize: vertical;
+    transition: all 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: #00d9ff;
+      background-color: #1a1f2e;
+      box-shadow: 0 0 0 3px rgba(0, 217, 255, 0.2);
+    }
+
+    &:disabled {
+      background-color: #0f1419;
+      color: #6b7280;
+      cursor: not-allowed;
+    }
+
+    &::placeholder {
+      color: #6b7280;
+    }
+  }
+
+  .character-count {
+    text-align: right;
+    font-size: 0.8rem;
+    color: #a0a6b4;
+    margin-top: 0.25rem;
+  }
+}
