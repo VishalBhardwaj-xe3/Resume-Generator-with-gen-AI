@@ -1,0 +1,20 @@
+.card {
+  background-color: #1e2139;
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid #2d3447;
+
+  &.shadow {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+
+    &:hover {
+      box-shadow: 0 15px 50px rgba(0, 217, 255, 0.1);
+      border-color: #00d9ff;
+    }
+  }
+
+  &.padded {
+    padding: 2rem;
+  }
+}
