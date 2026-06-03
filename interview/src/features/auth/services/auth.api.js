@@ -44,7 +44,7 @@ export const getMe = async () => {
       const response = await api.get("/api/auth/me");
        return response.data;
   } catch (error) {
-    console.log(err);
+    console.log(error);
   }
  
 };
