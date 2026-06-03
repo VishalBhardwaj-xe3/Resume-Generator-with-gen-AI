@@ -27,8 +27,8 @@ public class AIservices {
     private final RestTemplate restTamplate = new RestTemplate();
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-    public InterviewReport generateReport(String jobDescription, String selfDescription) {
-        String prompt = buildPrompt(jobDescription, selfDescription);
+    public InterviewReport generateReport(String jobDescription, String selfDescription, String resumePath) {
+        String prompt = buildPrompt(jobDescription, selfDescription, resumePath);
 
         String jsonResponse = callGemini(prompt);
 
@@ -36,7 +36,12 @@ public class AIservices {
 
     }
 
-    private String buildPrompt(String jobDescription, String selfDescription) {
+    private String buildPrompt(String jobDescription, String selfDescription, String resumePath) {
+
+        String resumeInfo = resumePath != null
+            ? "Candidate has uploaded a resume: " + resumePath
+            : "No resume provided";
+
         return """
                 You are an expert career coach and interview preparation assistant.
 
@@ -47,6 +52,9 @@ public class AIservices {
 
                 Candidate Background:
                 """ + selfDescription + """
+
+                Resume Info:
+                """ + resumeInfo + """
 
                 Return ONLY a valid JSON object with exactly this structure, no extra text:
                 {
