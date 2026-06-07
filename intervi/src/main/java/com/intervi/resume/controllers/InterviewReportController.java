@@ -4,6 +4,8 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.intervi.resume.models.InterviewReport;
 import com.intervi.resume.repository.InterviewreportRepository;
 import com.intervi.resume.services.AIservices;
+import com.intervi.resume.services.PdfService;
 import com.intervi.resume.services.fileStrorageService;
 
 @RestController
@@ -34,6 +37,9 @@ public class InterviewReportController {
 
     @Autowired
     private fileStrorageService fileStrorageService;
+
+    @Autowired
+    private PdfService pdfService;
 
     @PostMapping(value = "/generate", consumes = "multipart/form-data")
     public ResponseEntity<InterviewReport> generate(
@@ -73,5 +79,25 @@ public class InterviewReportController {
                 .orElseThrow(() -> new RuntimeException("Report not found"));
         return ResponseEntity.ok(report);
     }
+
+    @GetMapping("/download-resume/{id}")
+    public ResponseEntity<byte[]> downloadResume(
+        @PathVariable String id,
+        @RequestAttribute("email") String email
+    ) {
+        InterviewReport report = interviewreportRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Report not found"));
+            
+        byte[] pdf = pdfService.generateResumePdf(report);
+        
+        HttpHeaders headers = new HttpHeaders();
+    headers.setContentType(MediaType.APPLICATION_PDF);
+    headers.setContentDispositionFormData("attachment", "resume.pdf");
+
+    return ResponseEntity.ok()
+            .headers(headers)
+            .body(pdf);
+    }
+
 
 }
