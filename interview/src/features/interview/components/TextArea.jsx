@@ -25,7 +25,7 @@ const TextArea = ({
         name={name}
         placeholder={placeholder}
         value={value}
-        onChange={(e) => onChange?.(e.target.value)}
+        onChange={(e) => onChange(e)}
         maxLength={maxLength}
         className="textarea-input"
       />

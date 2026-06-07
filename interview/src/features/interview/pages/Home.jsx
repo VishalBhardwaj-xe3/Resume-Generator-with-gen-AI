@@ -4,28 +4,30 @@ import Card from "../components/Card";
 import TextArea from "../components/TextArea";
 import FileUpload from "../components/FileUpload";
 import Button from "../components/Button";
+import { useInterview } from "../hooks/useInterview";
+import { useNavigate } from "react-router";
 
 /**
  * Home Page - UI Layer Component
  * Pure presentational component that receives all data and handlers via props
  * Follows 4-layer React architecture: UI (this layer) -> Hooks -> State -> API
  */
-const Home = ({ 
-  // Form data
-  jobDescription = "",
-  selfDescription = "",
-  resumeFile = null,
-  
-  // Form handlers
-  onJobDescriptionChange = () => {},
-  onSelfDescriptionChange = () => {},
-  onResumeFileSelect = () => {},
-  onGenerateReport = () => {},
-  
-  // UI state
-  isLoading = false,
-  error = null
-}) => {
+const Home = () => {
+
+  const navigate = useNavigate()
+
+  const {
+    jobDescription,
+    selfDescription,
+    resumeFile,
+    onJobDescriptionChange,
+    onSelfDescriptionChange,
+    onResumeFileSelect,
+    onGenerateReport,
+    isLoading,
+    error,
+  } = useInterview();
+
   return (
     <main className="home">
       <div className="home-container">
@@ -33,7 +35,8 @@ const Home = ({
         <section className="home-header">
           <h1 className="home-title">Interview Preparation Assistant</h1>
           <p className="home-subtitle">
-            Upload your resume and share the job description to get tailored interview insights
+            Upload your resume and share the job description to get tailored
+            interview insights
           </p>
         </section>
 
@@ -63,7 +66,6 @@ const Home = ({
               />
             </div>
           </Card>
-
           {/* Right Panel */}
           <Card className="input-panel right-panel">
             <div className="panel-content">
@@ -87,7 +89,9 @@ const Home = ({
 
               {/* Self Description Section */}
               <div className="section">
-                <h3 className="section-title">Cover Letter / Self Description</h3>
+                <h3 className="section-title">
+                  Cover Letter / Self Description
+                </h3>
                 <TextArea
                   id="selfDescription"
                   name="selfDescription"
@@ -112,6 +116,15 @@ const Home = ({
                 >
                   {isLoading ? "Generating..." : "Generate Interview Report"}
                 </Button>
+                <div className="action-section"></div>
+                <button
+                  className="button-primary"
+                  variant="primary"
+                  size="large"
+                  onClick={() => navigate("/reports")}
+                >
+                  View Past Reports
+                </button>
               </div>
             </div>
           </Card>

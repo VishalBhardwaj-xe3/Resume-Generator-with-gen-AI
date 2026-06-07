@@ -1,7 +1,9 @@
 package com.intervi.resume.models;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -29,6 +31,7 @@ public class InterviewReport {
 
     private String Resume;
 
+    @NotBlank(message = "Self descrioption is required")
     private String selfDescription;
 
     @Min(value = 0)
@@ -43,6 +46,9 @@ public class InterviewReport {
     private List<SkillGap> skillGaps;
 
     private List<Preparation> preparationPlan;
+
+    @CreatedDate
+    private LocalDateTime createdAt;
 
 
 
