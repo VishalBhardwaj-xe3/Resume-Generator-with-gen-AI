@@ -34,7 +34,5 @@ build/
 
 ### env ###
 .env
-!**intervi/src/main/resources/application.properties
-
-# Ignore the main application properties file
 src/main/resources/application.properties
+application.properties
