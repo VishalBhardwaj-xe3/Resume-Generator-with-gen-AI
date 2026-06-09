@@ -38,7 +38,7 @@ public class SecurityConfig {
         CorsConfiguration config = new CorsConfiguration();
         
         // ✅ allow React origin
-        config.setAllowedOrigins(List.of("http://localhost:5173"));
+        config.setAllowedOrigins(List.of("http://localhost:5173","https://interview-preparation-plan.vercel.app"));
         
         // ✅ allow all methods
         config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
