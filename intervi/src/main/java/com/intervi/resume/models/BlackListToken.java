@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import java.time.LocalDateTime;
 
 @Data
-@Document("BlackList_tokens")
+@Document(collection = "BlackList_tokens")
 public class BlackListToken {
     @Id
     private String Id;
