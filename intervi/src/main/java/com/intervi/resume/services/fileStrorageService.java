@@ -14,7 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Service
 public class fileStrorageService {
     
-    @Value("${file.upload.dir}")
+    @Value("${FILE_UPLOAD_DIR}")
     private String uploadDir;
 
     public String saveFile(MultipartFile file) {

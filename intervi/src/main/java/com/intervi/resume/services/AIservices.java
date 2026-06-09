@@ -18,10 +18,10 @@ import tools.jackson.databind.ObjectMapper;
 
 @Service
 public class AIservices {
-    @Value("${gemini.api.key}")
+    @Value("${GEMINI_API_KEY}")
     private String apiKey;
 
-    @Value("${gemini.api.url}")
+    @Value("${GEMINI_API_URL}")
     private String apiUrl;
 
     private final RestTemplate restTamplate = new RestTemplate();
