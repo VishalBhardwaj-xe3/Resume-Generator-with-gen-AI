@@ -35,3 +35,4 @@ build/
 ### env ###
 .env
 intervi/src/main/resources/application.properties
+application.properties
