@@ -6,7 +6,7 @@ A full-stack AI-powered interview preparation platform that analyzes your resume
 
 ## Live Demo
 
-🔗 [Coming soon](#)
+🔗 [interview-preparation-plan.vercel.app]
 
 ---
 
